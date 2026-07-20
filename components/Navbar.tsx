@@ -78,7 +78,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle className="hidden sm:flex" fixedLight={!scrolled} />
           <button
             onClick={onBook}
@@ -86,6 +86,9 @@ export function Navbar({ onBook }: { onBook: () => void }) {
           >
             Reservar cita
           </button>
+          {/* En móvil el toggle vive junto al menú hamburguesa, siempre
+              visible, en vez de escondido dentro del desplegable. */}
+          <ThemeToggle className="flex sm:hidden" fixedLight={!scrolled} />
           <button
             onClick={() => setOpen(!open)}
             className={`lg:hidden p-2 cursor-pointer ${menuIcon}`}
@@ -118,17 +121,16 @@ export function Navbar({ onBook }: { onBook: () => void }) {
                   </a>
                 </li>
               ))}
-              <li className="pt-3 flex items-center gap-3">
+              <li className="pt-3">
                 <button
                   onClick={() => {
                     setOpen(false);
                     onBook();
                   }}
-                  className="flex-1 btn-shimmer text-onbrand font-semibold uppercase tracking-wider rounded-full px-6 py-4 cursor-pointer"
+                  className="w-full btn-shimmer text-onbrand font-semibold uppercase tracking-wider rounded-full px-6 py-4 cursor-pointer"
                 >
                   Reservar cita
                 </button>
-                <ThemeToggle className="flex sm:hidden shrink-0" />
               </li>
             </ul>
           </motion.div>
