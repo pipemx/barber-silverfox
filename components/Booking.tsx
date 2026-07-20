@@ -212,7 +212,7 @@ export function Booking() {
               <button
                 type="submit"
                 disabled={!valid}
-                className="btn-shimmer text-ink font-semibold uppercase tracking-wider text-sm rounded-full py-4 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-glow-ice"
+                className="btn-shimmer text-onbrand font-semibold uppercase tracking-wider text-sm rounded-full py-4 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-glow-ice"
               >
                 <WhatsAppIcon className="w-5 h-5" />
                 Reservar por WhatsApp

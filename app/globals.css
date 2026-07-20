@@ -2,10 +2,11 @@
 
 /* ============================================================
    DESIGN TOKENS — Silver Fox / Steel & Ice
-   Cromo plateado + azul hielo eléctrico sobre azul-noche.
+   Cromo plateado + azul hielo eléctrico. Soporta modo oscuro (base)
+   y modo claro (data-theme="light" en <html>).
    ============================================================ */
 @theme {
-  --color-ink: #060a13;          /* fondo base (azul-noche, no negro puro) */
+  --color-ink: #060a13;          /* fondo base */
   --color-ink-soft: #0b1120;     /* fondo secciones alternas */
   --color-surface: #101a2e;      /* cards */
   --color-surface-2: #16223c;    /* cards elevadas */
@@ -14,9 +15,16 @@
   --color-ice-bright: #9fe6ff;   /* acento hover / highlights */
   --color-ice-deep: #1573b8;     /* acento profundo */
   --color-violet: #8b5cf6;       /* acento secundario para degradados */
-  --color-cream: #f2f7fd;        /* texto principal (blanco escarcha) */
+  --color-cream: #f2f7fd;        /* texto principal */
   --color-stone-muted: #93a3bc;  /* texto secundario */
   --color-whatsapp: #25d366;
+  /* Fijos: NO cambian con el tema. */
+  /* Texto/iconos sobre superficies de acento siempre brillantes
+     (botones btn-shimmer, WhatsApp). */
+  --color-onbrand: #060a13;
+  /* Texto sobre superficies de acento siempre profundas/saturadas
+     (badges con fondo ice-deep). */
+  --color-oncolor: #f2f7fd;
 
   --font-display: var(--font-bebas), "Bebas Neue", sans-serif;
   --font-sans: var(--font-jost), "Jost", sans-serif;
@@ -26,6 +34,56 @@
   --shadow-glow-ice: 0 0 40px rgba(76, 195, 255, 0.28);
   --shadow-glow-violet: 0 0 40px rgba(139, 92, 246, 0.25);
   --shadow-card: 0 8px 32px rgba(2, 6, 16, 0.55);
+}
+
+/* Variables auxiliares (no son tokens de color de Tailwind, pero
+   también cambian con el tema): glass y gradientes de texto. */
+:root {
+  --glass-bg: rgba(10, 16, 30, 0.62);
+  --glass-border: rgba(76, 195, 255, 0.14);
+  --gradient-ice-text: linear-gradient(
+    115deg,
+    #f8fbff 0%,
+    #c9d9ee 22%,
+    #8fd9ff 48%,
+    #4cc3ff 72%,
+    #aebfd9 100%
+  );
+  --gradient-electric-text: linear-gradient(115deg, #9fe6ff 0%, #4cc3ff 45%, #8b5cf6 100%);
+}
+
+/* ============================================================
+   MODO CLARO — mismo lenguaje de marca (hielo + violeta) invertido
+   sobre blanco/plata en vez de azul-noche.
+   ============================================================ */
+:root[data-theme="light"] {
+  --color-ink: #ffffff;
+  --color-ink-soft: #eef3fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f5f8fc;
+  --color-line: #dde6f2;
+  --color-ice: #1573b8;
+  --color-ice-bright: #2f9fe0;
+  --color-ice-deep: #0b4a73;
+  --color-violet: #7c3aed;
+  --color-cream: #10192c;
+  --color-stone-muted: #5c6c86;
+
+  --shadow-glow-ice: 0 0 40px rgba(21, 115, 184, 0.18);
+  --shadow-glow-violet: 0 0 36px rgba(124, 58, 237, 0.15);
+  --shadow-card: 0 8px 28px rgba(16, 25, 44, 0.1);
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(21, 115, 184, 0.16);
+  --gradient-ice-text: linear-gradient(
+    115deg,
+    #0b4a73 0%,
+    #1573b8 28%,
+    #2f9fe0 55%,
+    #7c3aed 85%,
+    #1573b8 100%
+  );
+  --gradient-electric-text: linear-gradient(115deg, #1573b8 0%, #2f9fe0 45%, #7c3aed 100%);
 }
 
 html {
@@ -45,6 +103,14 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   width: 100%;
+}
+
+/* Transición suave al cambiar de tema. Las utilidades de Tailwind con su
+   propia clase de transición (más específica) siguen ganando, así que esto
+   solo "rellena" los elementos que no tenían una transición definida. */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 ::selection {
@@ -76,16 +142,43 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Glassmorphism escarcha */
+/* Glassmorphism — reactivo al tema (claro/oscuro) */
 .glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Glassmorphism fijo, siempre oscuro: para elementos que viven sobre el
+   video del hero o el lightbox de la galería, cuyo fondo NUNCA cambia de
+   claridad aunque el usuario cambie el tema del sitio. */
+.glass-dark {
   background: rgba(10, 16, 30, 0.62);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(76, 195, 255, 0.14);
 }
 
-/* Texto cromado plata → hielo (efecto metálico del logo) */
+/* Texto cromado plata → hielo (efecto metálico), reactivo al tema */
 .text-ice-gradient {
+  background: var(--gradient-ice-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Texto degradado hielo → violeta para acentos con más energía, reactivo */
+.text-electric-gradient {
+  background: var(--gradient-electric-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Igual que .text-ice-gradient pero FIJO (siempre el degradado oscuro):
+   para el titular del hero, que vive sobre el video y nunca cambia. */
+.hero-gradient-text {
   background: linear-gradient(
     115deg,
     #f8fbff 0%,
@@ -94,14 +187,6 @@ body {
     #4cc3ff 72%,
     #aebfd9 100%
   );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Texto degradado hielo → violeta para acentos con más energía */
-.text-electric-gradient {
-  background: linear-gradient(115deg, #9fe6ff 0%, #4cc3ff 45%, #8b5cf6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -127,7 +212,8 @@ body {
   animation: drift 18s ease-in-out infinite;
 }
 
-/* CTA principal: cromo-hielo con barrido de luz */
+/* CTA principal: cromo-hielo con barrido de luz (fijo: el botón siempre
+   es brillante, en cualquier tema, por eso no usa variables de tema) */
 @keyframes shimmer {
   0% { background-position: -200% center; }
   100% { background-position: 200% center; }

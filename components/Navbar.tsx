@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { brand } from "@/lib/config";
+import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
   { href: "#servicios", label: "Servicios" },
@@ -25,6 +26,16 @@ export function Navbar({ onBook }: { onBook: () => void }) {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  // Sin scroll, la barra es transparente y vive sobre el video del hero
+  // (siempre oscuro): el texto debe quedarse fijo y claro para legibilidad.
+  // Con scroll, hay un fondo .glass detrás que sí sigue el tema claro/oscuro,
+  // así que el texto puede reaccionar al tema con normalidad.
+  const tagline = scrolled ? "text-ice" : "text-[#4cc3ff]";
+  const navLink = scrolled
+    ? "text-stone-muted hover:text-ice-bright"
+    : "text-[#93a3bc] hover:text-[#9fe6ff]";
+  const menuIcon = scrolled ? "text-cream" : "text-[#f2f7fd]";
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
@@ -41,10 +52,14 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             className="w-9 h-9 md:w-10 md:h-10 rounded-full border border-ice/30 object-cover"
           />
           <span className="flex items-baseline gap-2">
-            <span className="font-display text-xl md:text-2xl tracking-widest text-ice-gradient">
+            <span
+              className={`font-display text-xl md:text-2xl tracking-widest ${
+                scrolled ? "text-ice-gradient" : "hero-gradient-text"
+              }`}
+            >
               {brand.name}
             </span>
-            <span className="text-ice text-[10px] md:text-xs tracking-[0.3em] uppercase">
+            <span className={`text-[10px] md:text-xs tracking-[0.3em] uppercase ${tagline}`}>
               {brand.tagline}
             </span>
           </span>
@@ -55,7 +70,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="text-sm tracking-wide text-stone-muted hover:text-ice-bright transition-colors duration-300"
+                className={`text-sm tracking-wide transition-colors duration-300 ${navLink}`}
               >
                 {l.label}
               </a>
@@ -64,15 +79,16 @@ export function Navbar({ onBook }: { onBook: () => void }) {
         </ul>
 
         <div className="flex items-center gap-3">
+          <ThemeToggle className="hidden sm:flex" fixedLight={!scrolled} />
           <button
             onClick={onBook}
-            className="hidden sm:inline-flex btn-shimmer text-ink text-xs md:text-sm font-semibold uppercase tracking-wider rounded-full px-5 md:px-6 py-2.5 md:py-3 cursor-pointer transition-shadow hover:shadow-glow-ice"
+            className="hidden sm:inline-flex btn-shimmer text-onbrand text-xs md:text-sm font-semibold uppercase tracking-wider rounded-full px-5 md:px-6 py-2.5 md:py-3 cursor-pointer transition-shadow hover:shadow-glow-ice"
           >
             Reservar cita
           </button>
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2 text-cream cursor-pointer"
+            className={`lg:hidden p-2 cursor-pointer ${menuIcon}`}
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
             aria-expanded={open}
           >
@@ -102,16 +118,17 @@ export function Navbar({ onBook }: { onBook: () => void }) {
                   </a>
                 </li>
               ))}
-              <li className="pt-3">
+              <li className="pt-3 flex items-center gap-3">
                 <button
                   onClick={() => {
                     setOpen(false);
                     onBook();
                   }}
-                  className="w-full btn-shimmer text-ink font-semibold uppercase tracking-wider rounded-full px-6 py-4 cursor-pointer"
+                  className="flex-1 btn-shimmer text-onbrand font-semibold uppercase tracking-wider rounded-full px-6 py-4 cursor-pointer"
                 >
                   Reservar cita
                 </button>
+                <ThemeToggle className="flex sm:hidden shrink-0" />
               </li>
             </ul>
           </motion.div>

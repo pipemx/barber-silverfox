@@ -113,7 +113,7 @@ export function BookingModal({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-ink/80 backdrop-blur-sm p-0 sm:p-6"
+          className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center bg-black/70 backdrop-blur-sm p-0 sm:p-6"
           onClick={onClose}
           role="dialog"
           aria-modal="true"
@@ -280,7 +280,7 @@ export function BookingModal({
                       <button
                         onClick={() => canContinue && setStep(3)}
                         disabled={!canContinue}
-                        className="btn-shimmer text-ink font-semibold uppercase tracking-wider rounded-full py-4 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
+                        className="btn-shimmer text-onbrand font-semibold uppercase tracking-wider rounded-full py-4 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
                       >
                         Continuar
                       </button>
@@ -339,8 +339,8 @@ export function BookingModal({
                         aria-disabled={!canContinue}
                         className={`flex items-center justify-center gap-2 rounded-full py-4 font-semibold uppercase tracking-wider text-sm transition-opacity ${
                           canContinue
-                            ? "bg-whatsapp text-ink cursor-pointer hover:opacity-90"
-                            : "bg-whatsapp/30 text-ink/50 cursor-not-allowed"
+                            ? "bg-whatsapp text-onbrand cursor-pointer hover:opacity-90"
+                            : "bg-whatsapp/30 text-onbrand/50 cursor-not-allowed"
                         }`}
                       >
                         <WhatsAppIcon className="w-5 h-5" />

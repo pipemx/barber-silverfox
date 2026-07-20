@@ -25,7 +25,7 @@ export function Membership() {
         />
         <Reveal>
           <div className="relative glass rounded-3xl border border-ice/30 p-8 md:p-12 shadow-glow-ice">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 btn-shimmer text-ink rounded-full px-6 py-1.5 text-xs font-bold uppercase tracking-widest flex items-center gap-1.5">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 btn-shimmer text-onbrand rounded-full px-6 py-1.5 text-xs font-bold uppercase tracking-widest flex items-center gap-1.5">
               <Crown className="w-3.5 h-3.5" aria-hidden="true" />
               {membership.name}
             </div>

@@ -117,8 +117,8 @@ export function SocialMedia() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   {i === preview.length - 1 && (
-                    <div className="absolute inset-0 bg-ink/70 backdrop-blur-[2px] flex flex-col items-center justify-center gap-2 text-cream">
-                      <InstagramIcon className="w-8 h-8 text-ice" />
+                    <div className="absolute inset-0 bg-[#060a13]/75 backdrop-blur-[2px] flex flex-col items-center justify-center gap-2 text-[#f2f7fd]">
+                      <InstagramIcon className="w-8 h-8 text-[#4cc3ff]" />
                       <span className="text-xs md:text-sm font-medium">Ver más en Instagram</span>
                     </div>
                   )}

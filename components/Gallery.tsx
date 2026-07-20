@@ -90,7 +90,7 @@ export function Gallery() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[100] bg-ink/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 z-[100] bg-[#05070c]/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10"
             onClick={close}
             role="dialog"
             aria-modal="true"
@@ -112,14 +112,14 @@ export function Gallery() {
                 sizes="(max-width: 1024px) 100vw, 900px"
                 className="object-contain"
               />
-              <p className="absolute -bottom-8 inset-x-0 text-center text-xs md:text-sm text-stone-muted">
+              <p className="absolute -bottom-8 inset-x-0 text-center text-xs md:text-sm text-[#93a3bc]">
                 {gallery[active].alt} · {active + 1} / {gallery.length}
               </p>
             </motion.div>
 
             <button
               onClick={close}
-              className="absolute top-5 right-5 w-11 h-11 rounded-full glass flex items-center justify-center text-cream hover:text-ice transition-colors cursor-pointer"
+              className="absolute top-5 right-5 w-11 h-11 rounded-full glass-dark flex items-center justify-center text-[#f2f7fd] hover:text-[#4cc3ff] transition-colors cursor-pointer"
               aria-label="Cerrar galería"
             >
               <X className="w-5 h-5" />
@@ -129,7 +129,7 @@ export function Gallery() {
                 e.stopPropagation();
                 prev();
               }}
-              className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass flex items-center justify-center text-cream hover:text-ice transition-colors cursor-pointer"
+              className="absolute left-3 md:left-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-dark flex items-center justify-center text-[#f2f7fd] hover:text-[#4cc3ff] transition-colors cursor-pointer"
               aria-label="Foto anterior"
             >
               <ChevronLeft className="w-6 h-6" />
@@ -139,7 +139,7 @@ export function Gallery() {
                 e.stopPropagation();
                 next();
               }}
-              className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass flex items-center justify-center text-cream hover:text-ice transition-colors cursor-pointer"
+              className="absolute right-3 md:right-8 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-dark flex items-center justify-center text-[#f2f7fd] hover:text-[#4cc3ff] transition-colors cursor-pointer"
               aria-label="Foto siguiente"
             >
               <ChevronRight className="w-6 h-6" />

@@ -32,7 +32,7 @@ function ServiceCard({
         {service.badge && (
           <span
             className={`absolute -top-3 left-6 rounded-full px-4 py-1 text-[11px] font-semibold uppercase tracking-widest ${
-              featured ? "btn-shimmer text-ink" : "bg-ice-deep text-cream"
+              featured ? "btn-shimmer text-onbrand" : "bg-ice-deep text-oncolor"
             }`}
           >
             {service.badge}

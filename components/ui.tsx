@@ -74,7 +74,7 @@ export function GlowButton({
   className?: string;
   ariaLabel?: string;
 }) {
-  const cls = `btn-shimmer inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-ink font-semibold tracking-wide uppercase text-sm cursor-pointer select-none transition-shadow duration-300 hover:shadow-glow-ice min-h-[52px] ${className}`;
+  const cls = `btn-shimmer inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-onbrand font-semibold tracking-wide uppercase text-sm cursor-pointer select-none transition-shadow duration-300 hover:shadow-glow-ice min-h-[52px] ${className}`;
   const inner = (
     <motion.span
       className="inline-flex items-center gap-2"

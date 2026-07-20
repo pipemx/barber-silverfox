@@ -38,7 +38,7 @@ export function FloatingCta({ onBook }: { onBook: () => void }) {
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.35, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed right-5 md:right-8 z-40 w-14 h-14 rounded-full bg-whatsapp text-ink flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.4)] cursor-pointer hover:scale-110 transition-all duration-300 ${
+        className={`fixed right-5 md:right-8 z-40 w-14 h-14 rounded-full bg-whatsapp text-onbrand flex items-center justify-center shadow-[0_8px_30px_rgba(37,211,102,0.4)] cursor-pointer hover:scale-110 transition-all duration-300 ${
           scrolled ? "bottom-24 md:bottom-8" : "bottom-8"
         }`}
         aria-label="Escribir por WhatsApp"
@@ -60,7 +60,7 @@ export function FloatingCta({ onBook }: { onBook: () => void }) {
           >
             <button
               onClick={onBook}
-              className="w-full btn-shimmer text-ink font-semibold uppercase tracking-wider text-sm rounded-full py-4 flex items-center justify-center gap-2 cursor-pointer"
+              className="w-full btn-shimmer text-onbrand font-semibold uppercase tracking-wider text-sm rounded-full py-4 flex items-center justify-center gap-2 cursor-pointer"
             >
               <CalendarCheck className="w-4 h-4" />
               Reservar cita ahora

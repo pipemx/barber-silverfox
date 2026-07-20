@@ -48,10 +48,10 @@ function Comparator() {
           className="object-cover"
           style={{ objectPosition: "50% 25%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#060a13]/75 via-transparent to-transparent" />
         <div className="absolute bottom-6 right-6 text-right">
-          <p className="font-display text-2xl md:text-3xl text-ice-bright italic">Después</p>
-          <p className="text-xs md:text-sm text-stone-muted mt-1 uppercase tracking-widest">
+          <p className="font-display text-2xl md:text-3xl text-[#9fe6ff] italic">Después</p>
+          <p className="text-xs md:text-sm text-[#93a3bc] mt-1 uppercase tracking-widest">
             Taper Fade Silver · Silver Fox
           </p>
         </div>
@@ -70,9 +70,9 @@ function Comparator() {
           className="object-cover grayscale-[30%]"
           style={{ objectPosition: "50% 25%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#060a13]/75 via-transparent to-transparent" />
         <div className="absolute bottom-6 left-6">
-          <p className="font-display text-2xl md:text-3xl text-cream">Antes</p>
+          <p className="font-display text-2xl md:text-3xl text-[#f2f7fd]">Antes</p>
         </div>
       </div>
 
@@ -82,7 +82,7 @@ function Comparator() {
         style={{ left: `${pos}%` }}
       >
         <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-11 h-11 rounded-full btn-shimmer flex items-center justify-center shadow-card">
-          <MoveHorizontal className="w-5 h-5 text-ink" aria-hidden="true" />
+          <MoveHorizontal className="w-5 h-5 text-onbrand" aria-hidden="true" />
         </div>
       </div>
     </div>

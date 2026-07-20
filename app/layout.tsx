@@ -1,7 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Jost } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { brand, hours } from "@/lib/config";
+
+// Aplica el tema guardado ANTES de pintar la página (evita el flash del
+// tema equivocado). beforeInteractive lo inyecta en <head> y lo corre
+// antes de la hidratación.
+const themeInitScript = `
+(function () {
+  try {
+    var t = localStorage.getItem("theme");
+    if (t !== "light" && t !== "dark") t = "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+})();
+`;
 
 const bebas = Bebas_Neue({
   variable: "--font-bebas",
@@ -100,8 +114,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${bebas.variable} ${jost.variable} h-full antialiased`}>
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${bebas.variable} ${jost.variable} h-full antialiased`}
+    >
       <body className="min-h-full flex flex-col">
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitScript }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
