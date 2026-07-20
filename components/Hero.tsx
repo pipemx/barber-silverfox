@@ -48,15 +48,29 @@ export function Hero({ onBook }: { onBook: () => void }) {
       ref={ref}
       className="grain relative min-h-dvh flex flex-col items-center justify-center overflow-hidden px-5"
     >
-      {/* Foto de fondo cinematográfica */}
-      <Image
-        src="/images/hero-bg.jpg"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
+      {/* Video de fondo: cuadro icónico del chango a la entrada de la barbería */}
+      {reduce ? (
+        <Image
+          src="/images/hero-video-poster.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover saturate-75 brightness-90"
+        />
+      ) : (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-video-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover saturate-75 brightness-90"
+          aria-hidden="true"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
+      )}
       {/* Luz ambiental: hielo eléctrico + violeta de profundidad */}
       <div className="ambient-glow w-[500px] h-[500px] bg-ice/15 -top-40 -left-40" />
       <div
@@ -91,31 +105,6 @@ export function Hero({ onBook }: { onBook: () => void }) {
         style={reduce ? undefined : { y, opacity }}
         className="relative z-10 flex flex-col items-center text-center max-w-4xl pt-28 pb-32"
       >
-        {/* Logo animado con fondo de energía */}
-        <motion.div
-          {...enter(0)}
-          className="relative w-44 h-44 md:w-60 md:h-60 mb-8 flex items-center justify-center"
-        >
-          {/* Aurora giratoria difusa detrás del logo */}
-          <div
-            className="logo-aurora w-[130%] h-[130%] -inset-[15%]"
-            aria-hidden="true"
-          />
-          {/* Anillo de gradiente en rotación */}
-          <div className="logo-ring" aria-hidden="true" />
-          <div className="logo-breathe relative w-full h-full rounded-full overflow-hidden border border-ice/30">
-            <video
-              src="/videos/logo-anim.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover scale-[1.02]"
-              aria-label={`Logo animado de Barbería ${brand.name}`}
-            />
-          </div>
-        </motion.div>
-
         <motion.div
           {...enter(0.1)}
           className="glass rounded-full px-5 py-2 flex items-center gap-2 mb-8"

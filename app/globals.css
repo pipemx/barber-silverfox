@@ -166,49 +166,6 @@ body {
   animation: breathe 5s ease-in-out infinite;
 }
 
-/* Fondo animado del logo del hero: aurora giratoria + anillo de energía */
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
-}
-@keyframes aurora-pulse {
-  0%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
-  50% { opacity: 0.9; transform: rotate(180deg) scale(1.12); }
-  100% { opacity: 0.55; transform: rotate(360deg) scale(1); }
-}
-.logo-aurora {
-  position: absolute;
-  border-radius: 9999px;
-  background: conic-gradient(
-    from 0deg,
-    rgba(76, 195, 255, 0.85),
-    rgba(139, 92, 246, 0.55),
-    rgba(159, 230, 255, 0.9),
-    rgba(21, 115, 184, 0.5),
-    rgba(139, 92, 246, 0.65),
-    rgba(76, 195, 255, 0.85)
-  );
-  filter: blur(30px);
-  animation: aurora-pulse 12s linear infinite;
-  pointer-events: none;
-}
-.logo-ring {
-  position: absolute;
-  inset: -5px;
-  border-radius: 9999px;
-  background: conic-gradient(
-    from 0deg,
-    #4cc3ff 0%,
-    rgba(76, 195, 255, 0.05) 22%,
-    #9fe6ff 40%,
-    #8b5cf6 55%,
-    rgba(139, 92, 246, 0.05) 72%,
-    #f8fbff 88%,
-    #4cc3ff 100%
-  );
-  animation: spin-slow 7s linear infinite;
-  pointer-events: none;
-}
-
 /* Borde degradado para cards destacadas */
 .border-gradient-ice {
   border: 1px solid transparent;
@@ -219,7 +176,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .ambient-glow, .btn-shimmer, .particle, .logo-breathe, .logo-aurora, .logo-ring { animation: none; }
+  .ambient-glow, .btn-shimmer, .particle, .logo-breathe { animation: none; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
