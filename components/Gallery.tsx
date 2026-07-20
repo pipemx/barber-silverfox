@@ -40,7 +40,7 @@ export function Gallery() {
   }, [active, close, prev, next]);
 
   return (
-    <section id="galeria" className="relative py-24 md:py-32 px-5 md:px-8">
+    <section id="galeria" className="relative py-24 md:py-32 px-5 md:px-8 overflow-hidden">
       <div className="ambient-glow w-[400px] h-[400px] bg-ice/8 top-1/3 -left-40" />
       <div className="mx-auto max-w-6xl relative">
         <SectionHeading

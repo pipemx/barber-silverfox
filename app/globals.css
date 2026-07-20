@@ -30,6 +30,12 @@
 
 html {
   scroll-behavior: smooth;
+  /* overflow-x también aquí (no solo en body): Safari iOS usa las
+     dimensiones de <html> para el rebote elástico y el pinch-zoom, así que
+     sin esto la página puede sentirse "zoomeada" o permitir arrastre
+     horizontal en móvil aunque body ya lo bloquee. */
+  overflow-x: hidden;
+  width: 100%;
 }
 
 body {
@@ -38,6 +44,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  width: 100%;
 }
 
 ::selection {

@@ -9,7 +9,7 @@ import { Reveal, SectionHeading } from "./ui";
 export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
   const team = barbers.filter((b) => b.id !== "cualquiera");
   return (
-    <section id="barberos" className="relative py-24 md:py-32 px-5 md:px-8 bg-ink-soft border-y border-line">
+    <section id="barberos" className="relative py-24 md:py-32 px-5 md:px-8 bg-ink-soft border-y border-line overflow-hidden">
       <div className="ambient-glow w-[350px] h-[350px] bg-ice/8 top-20 right-0" />
       <div className="mx-auto max-w-6xl relative">
         <SectionHeading

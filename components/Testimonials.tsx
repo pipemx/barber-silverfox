@@ -6,7 +6,7 @@ import { Reveal, SectionHeading } from "./ui";
 
 export function Testimonials() {
   return (
-    <section className="relative py-24 md:py-32 px-5 md:px-8">
+    <section className="relative py-24 md:py-32 px-5 md:px-8 overflow-hidden">
       <div className="ambient-glow w-[400px] h-[400px] bg-ice/8 bottom-0 left-0" />
       <div className="mx-auto max-w-6xl relative">
         <SectionHeading

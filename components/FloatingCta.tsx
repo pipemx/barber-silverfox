@@ -13,11 +13,19 @@ import { WhatsAppIcon } from "./ui";
 export function FloatingCta({ onBook }: { onBook: () => void }) {
   const [scrolled, setScrolled] = useState(false);
 
+  // Usa IntersectionObserver sobre el hero en vez de comparar scrollY con
+  // window.innerHeight en cada evento de scroll: en móvil, innerHeight cambia
+  // mientras la barra de direcciones se oculta/aparece durante el scroll, lo
+  // que provocaba que el botón flotante parpadeara/se moviera solo.
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > window.innerHeight * 0.6);
-    fn();
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
+    const hero = document.getElementById("hero");
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { rootMargin: "-60% 0px 0px 0px", threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
 
   return (
