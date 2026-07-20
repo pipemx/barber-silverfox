@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — Silver Fox / Steel & Ice
+   Cromo plateado + azul hielo eléctrico sobre azul-noche.
+   ============================================================ */
+@theme {
+  --color-ink: #060a13;          /* fondo base (azul-noche, no negro puro) */
+  --color-ink-soft: #0b1120;     /* fondo secciones alternas */
+  --color-surface: #101a2e;      /* cards */
+  --color-surface-2: #16223c;    /* cards elevadas */
+  --color-line: #223151;         /* bordes */
+  --color-ice: #4cc3ff;          /* acento principal (azul hielo eléctrico) */
+  --color-ice-bright: #9fe6ff;   /* acento hover / highlights */
+  --color-ice-deep: #1573b8;     /* acento profundo */
+  --color-violet: #8b5cf6;       /* acento secundario para degradados */
+  --color-cream: #f2f7fd;        /* texto principal (blanco escarcha) */
+  --color-stone-muted: #93a3bc;  /* texto secundario */
+  --color-whatsapp: #25d366;
+
+  --font-display: var(--font-bebas), "Bebas Neue", sans-serif;
+  --font-sans: var(--font-jost), "Jost", sans-serif;
+
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --shadow-glow-ice: 0 0 40px rgba(76, 195, 255, 0.28);
+  --shadow-glow-violet: 0 0 40px rgba(139, 92, 246, 0.25);
+  --shadow-card: 0 8px 32px rgba(2, 6, 16, 0.55);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-ice);
+  color: var(--color-ink);
+}
+
+/* Scrollbar sutil acorde al tema */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--color-ice-deep); }
+
+/* El display (Bebas) respira mejor con un tracking ligero */
+.font-display {
+  letter-spacing: 0.02em;
+}
+
+/* Textura de grano sutil para profundidad cinematográfica */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Glassmorphism escarcha */
+.glass {
+  background: rgba(10, 16, 30, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(76, 195, 255, 0.14);
+}
+
+/* Texto cromado plata → hielo (efecto metálico del logo) */
+.text-ice-gradient {
+  background: linear-gradient(
+    115deg,
+    #f8fbff 0%,
+    #c9d9ee 22%,
+    #8fd9ff 48%,
+    #4cc3ff 72%,
+    #aebfd9 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Texto degradado hielo → violeta para acentos con más energía */
+.text-electric-gradient {
+  background: linear-gradient(115deg, #9fe6ff 0%, #4cc3ff 45%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Línea decorativa hielo */
+.ice-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-ice), transparent);
+}
+
+/* Glow ambiental animado */
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.08); }
+  66% { transform: translate(-30px, 25px) scale(0.95); }
+}
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  animation: drift 18s ease-in-out infinite;
+}
+
+/* CTA principal: cromo-hielo con barrido de luz */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.btn-shimmer {
+  background-image: linear-gradient(
+    110deg,
+    #4cc3ff 0%,
+    #9fe6ff 25%,
+    #4cc3ff 50%,
+    #7ea0f8 75%,
+    #4cc3ff 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Partículas flotantes (chispas de hielo del hero) */
+@keyframes particle-float {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: var(--p-opacity, 0.7); }
+  90% { opacity: var(--p-opacity, 0.7); }
+  100% {
+    transform: translateY(-110vh) translateX(var(--p-drift, 20px)) scale(0.4);
+    opacity: 0;
+  }
+}
+.particle {
+  position: absolute;
+  bottom: -2vh;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(159, 230, 255, 0.95) 0%, rgba(76, 195, 255, 0.35) 60%, transparent 100%);
+  pointer-events: none;
+  animation: particle-float linear infinite;
+}
+
+/* Halo de respiración para el logo animado */
+@keyframes breathe {
+  0%, 100% { box-shadow: 0 0 30px rgba(76, 195, 255, 0.25), 0 0 80px rgba(76, 195, 255, 0.1); }
+  50% { box-shadow: 0 0 50px rgba(76, 195, 255, 0.45), 0 0 110px rgba(76, 195, 255, 0.18); }
+}
+.logo-breathe {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+/* Fondo animado del logo del hero: aurora giratoria + anillo de energía */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.55; transform: rotate(0deg) scale(1); }
+  50% { opacity: 0.9; transform: rotate(180deg) scale(1.12); }
+  100% { opacity: 0.55; transform: rotate(360deg) scale(1); }
+}
+.logo-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(76, 195, 255, 0.85),
+    rgba(139, 92, 246, 0.55),
+    rgba(159, 230, 255, 0.9),
+    rgba(21, 115, 184, 0.5),
+    rgba(139, 92, 246, 0.65),
+    rgba(76, 195, 255, 0.85)
+  );
+  filter: blur(30px);
+  animation: aurora-pulse 12s linear infinite;
+  pointer-events: none;
+}
+.logo-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    #4cc3ff 0%,
+    rgba(76, 195, 255, 0.05) 22%,
+    #9fe6ff 40%,
+    #8b5cf6 55%,
+    rgba(139, 92, 246, 0.05) 72%,
+    #f8fbff 88%,
+    #4cc3ff 100%
+  );
+  animation: spin-slow 7s linear infinite;
+  pointer-events: none;
+}
+
+/* Borde degradado para cards destacadas */
+.border-gradient-ice {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    linear-gradient(135deg, rgba(76, 195, 255, 0.6), rgba(139, 92, 246, 0.4)) border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ambient-glow, .btn-shimmer, .particle, .logo-breathe, .logo-aurora, .logo-ring { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
