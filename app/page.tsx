@@ -18,6 +18,7 @@ import { Location } from "@/components/Location";
 import { Footer } from "@/components/Footer";
 import { BookingModal } from "@/components/BookingModal";
 import { FloatingCta } from "@/components/FloatingCta";
+import { Intro } from "@/components/Intro";
 
 export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <main className="relative">
+      <Intro />
       <Navbar onBook={() => openBooking()} />
       <Hero onBook={() => openBooking()} />
       <Stats />

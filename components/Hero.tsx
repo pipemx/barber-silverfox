@@ -57,31 +57,15 @@ export function Hero({ onBook }: { onBook: () => void }) {
       id="hero"
       className="grain relative min-h-dvh flex flex-col items-center justify-center overflow-hidden px-5"
     >
-      {/* Video de fondo: cuadro icónico del chango a la entrada de la barbería.
-          object-contain en móvil evita el recorte "zoom" del video vertical;
-          object-cover desde tablet/desktop, donde el recorte es mínimo. */}
-      {reduce ? (
-        <Image
-          src="/images/hero-video-poster.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-contain sm:object-cover saturate-75 brightness-90"
-        />
-      ) : (
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/images/hero-video-poster.jpg"
-          className="absolute inset-0 w-full h-full object-contain sm:object-cover saturate-75 brightness-90"
-          aria-hidden="true"
-        >
-          <source src="/videos/hero-bg.mp4" type="video/mp4" />
-        </video>
-      )}
+      {/* Foto real de la fachada de la barbería en Conkal. */}
+      <Image
+        src="/images/storefront.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover saturate-90 brightness-75"
+      />
       {/* Luz ambiental: hielo eléctrico + violeta de profundidad (fija,
           igual que el resto del hero, para no desentonar con el video). */}
       <div className="ambient-glow w-[500px] h-[500px] -top-40 -left-40" style={{ background: "rgba(76,195,255,0.15)" }} />
