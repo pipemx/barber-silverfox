@@ -21,5 +21,6 @@ export const waMessages = {
     `Hola Silver Fox 🦊 Quiero reservar una cita:\n\n👤 Nombre: ${data.name}\n📱 Teléfono: ${data.phone}\n✂️ Servicio: ${data.service}\n📅 Fecha: ${data.date}\n🕐 Hora: ${data.time}${
       data.comments?.trim() ? `\n📝 Comentarios: ${data.comments.trim()}` : ""
     }\n\n¿Me confirman disponibilidad?`,
-  membership: "Hola Silver Fox 🦊 Me interesa el Club Silver Fox. ¿Me comparten los detalles?",
+  membership: (planName: string) =>
+    `Hola Silver Fox 🦊 Me interesa el ${planName} del Club Silver Fox. ¿Me comparten los detalles?`,
 };

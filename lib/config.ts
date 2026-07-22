@@ -289,20 +289,44 @@ export const faqs = [
   },
 ];
 
-export const membership = {
-  // TODO: confirmar precio y beneficios reales del club
-  name: "Club Silver Fox",
-  price: 299,
-  regularValue: 390,
-  perks: [
-    "2 cortes premium al mes",
-    "Prioridad para agendar tu cita",
-    "Perfilado de ceja de cortesía",
-    "10% de descuento en servicios extra",
-    "Regalo de cumpleaños del club",
-    "Acceso a promos exclusivas para miembros",
-  ],
+export type MembershipPlan = {
+  id: string;
+  name: string;
+  price: number;
+  services: string[];
+  featured?: boolean;
 };
+
+// Los dos paquetes del Club Silver Fox: 2 servicios al mes por precio fijo.
+export const membershipPlans: MembershipPlan[] = [
+  {
+    id: "plan-cuidado",
+    name: "Plan Cuidado",
+    price: 300,
+    services: ["Corte", "Delineado de cejas", "Mascarilla"],
+  },
+  {
+    id: "plan-silver-fox",
+    name: "Plan Silver Fox",
+    price: 500,
+    services: [
+      "Corte",
+      "Delineado de barba",
+      "Mascarilla",
+      "Delineado de cejas",
+      "Toalla caliente",
+    ],
+    featured: true,
+  },
+];
+
+// Beneficios compartidos por ambos paquetes del club.
+export const membershipPerks = [
+  "Prioridad para agendar tu cita",
+  "Perfilado de ceja de cortesía",
+  "10% de descuento en servicios extra",
+  "Acceso a promos exclusivas para miembros",
+];
 
 // Horarios disponibles que muestra el reservador (demo).
 export const timeSlots = [
