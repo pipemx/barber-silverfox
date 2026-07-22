@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import { Award, CalendarCheck } from "lucide-react";
 import Image from "next/image";
 import { barbers, receptionist } from "@/lib/config";
 import { Reveal, SectionHeading } from "./ui";
@@ -54,21 +54,23 @@ export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
                     <p className="text-ice text-xs uppercase tracking-[0.2em] mt-1">{b.role}</p>
                   </div>
                   <p className="text-sm text-stone-muted leading-relaxed">{b.specialty}</p>
-                  <div className="flex items-center justify-between pt-3 border-t border-line/60">
-                    {b.experience ? (
+                  <div className="flex flex-col gap-3 pt-3 border-t border-line/60">
+                    {b.experience && (
                       <span className="flex items-center gap-1.5 text-xs text-stone-muted">
                         <Award className="w-3.5 h-3.5 text-ice" />
                         {b.experience} de experiencia
                       </span>
-                    ) : (
-                      <span />
                     )}
-                    <button
+                    <motion.button
                       onClick={() => onBook(b.id)}
-                      className="text-xs font-semibold uppercase tracking-wider text-ice hover:text-ice-bright transition-colors cursor-pointer"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                      className="inline-flex items-center justify-center gap-1.5 rounded-full border border-ice/30 bg-ice/10 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-ice hover:bg-ice/20 hover:border-ice/60 hover:text-ice-bright hover:shadow-glow-ice transition-colors duration-300 cursor-pointer"
                     >
+                      <CalendarCheck className="w-3.5 h-3.5" aria-hidden="true" />
                       Agendar con {b.name.split(" ")[0]}
-                    </button>
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>

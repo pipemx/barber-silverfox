@@ -195,7 +195,7 @@ export const receptionist: StaffMember = {
   photo: "/images/staff-isabella.jpg",
 };
 
-// Galería — fotos reales del local (silver1.jpg … silver8.jpg)
+// Galería de instalaciones — fotos reales del local (silver1.jpg … silver8.jpg)
 export type GalleryItem = {
   src: string;
   alt: string;
@@ -211,6 +211,28 @@ export const gallery: GalleryItem[] = [
   { src: "/images/silver6.jpg", alt: "Sillas de barbero listas para el siguiente cliente" },
   { src: "/images/silver7.jpg", alt: "Estación de Tony en Silver Fox", tall: true },
   { src: "/images/silver8.jpg", alt: "Estaciones de Alan y Ricardo en Silver Fox" },
+];
+
+// Carrusel de resultados — cortes reales terminados (corte1.jpg … corte13.jpg)
+export type ResultItem = {
+  src: string;
+  alt: string;
+};
+
+export const results: ResultItem[] = [
+  { src: "/images/corte1.jpg", alt: "Taper fade terminado en Silver Fox" },
+  { src: "/images/corte2.jpg", alt: "Perfilado de barba con navaja" },
+  { src: "/images/corte3.jpg", alt: "Ritual de barba con toalla caliente" },
+  { src: "/images/corte4.jpg", alt: "Corte de precisión terminado" },
+  { src: "/images/corte5.jpg", alt: "Diseño freestyle en el corte" },
+  { src: "/images/corte6.jpg", alt: "Fade limpio con acabado de espejo" },
+  { src: "/images/corte7.jpg", alt: "Peinado con acabado clásico" },
+  { src: "/images/corte8.jpg", alt: "Corte con línea de diseño" },
+  { src: "/images/corte9.jpg", alt: "Resultado de corte + barba" },
+  { src: "/images/corte10.jpg", alt: "Fade terminado en Silver Fox" },
+  { src: "/images/corte11.jpg", alt: "Corte de precisión con contorno definido" },
+  { src: "/images/corte12.jpg", alt: "Estilo urbano terminado" },
+  { src: "/images/corte13.jpg", alt: "Acabado de barba y corte en Silver Fox" },
 ];
 
 export const testimonials = [
