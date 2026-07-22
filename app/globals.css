@@ -208,8 +208,14 @@ body {
   border: 1px solid rgba(150, 160, 175, 0.18);
 }
 
-/* Texto cromado plata → hielo (efecto metálico), reactivo al tema */
+/* Texto cromado plata → hielo (efecto metálico), reactivo al tema.
+   inline-block + un pelín de padding a la derecha: la mayoría de estos
+   títulos van en cursiva, y el trazo inclinado de la última letra se sale
+   un poco de su propia caja; sin este margen, el overflow-hidden de las
+   secciones se lo comía (se veía "recortado"). */
 .text-ice-gradient {
+  display: inline-block;
+  padding-right: 0.12em;
   background: var(--gradient-ice-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -218,6 +224,8 @@ body {
 
 /* Texto degradado hielo → violeta para acentos con más energía, reactivo */
 .text-electric-gradient {
+  display: inline-block;
+  padding-right: 0.12em;
   background: var(--gradient-electric-text);
   -webkit-background-clip: text;
   background-clip: text;
@@ -227,6 +235,8 @@ body {
 /* Igual que .text-ice-gradient pero FIJO (siempre el degradado oscuro):
    para el titular del hero, que vive sobre el video y nunca cambia. */
 .hero-gradient-text {
+  display: inline-block;
+  padding-right: 0.12em;
   background: linear-gradient(
     115deg,
     #f8fbff 0%,

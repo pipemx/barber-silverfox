@@ -106,6 +106,16 @@ export function Footer() {
 
         <p className="text-xs text-stone-muted/60">
           © {new Date().getFullYear()} Barbería {brand.name}. Todos los derechos reservados.
+          {" · "}
+          Diseño por{" "}
+          <a
+            href="https://xinfinlab.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-ice transition-colors"
+          >
+            xinfinlab.com
+          </a>
         </p>
       </div>
     </footer>

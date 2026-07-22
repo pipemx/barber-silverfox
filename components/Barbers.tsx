@@ -29,14 +29,14 @@ export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                 className="group bg-surface border border-line hover:border-ice/40 rounded-2xl overflow-hidden transition-colors duration-300"
               >
-                <div className="relative h-64 md:h-72 bg-gradient-to-br from-surface-2 via-ink-soft to-ink overflow-hidden">
+                <div className="relative h-80 md:h-96 bg-gradient-to-br from-surface-2 via-ink-soft to-ink overflow-hidden">
                   {b.photo ? (
                     <Image
                       src={b.photo}
                       alt={`${b.name}, ${b.role}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -83,13 +83,13 @@ export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
               className="group bg-surface border border-line hover:border-ice/40 rounded-2xl overflow-hidden transition-colors duration-300"
             >
-              <div className="relative h-64 md:h-72 bg-gradient-to-br from-surface-2 via-ink-soft to-ink overflow-hidden">
+              <div className="relative h-80 md:h-96 bg-gradient-to-br from-surface-2 via-ink-soft to-ink overflow-hidden">
                 <Image
                   src={receptionist.photo}
                   alt={`${receptionist.name}, ${receptionist.role}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover object-[center_12%] transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-surface to-transparent" />
               </div>
