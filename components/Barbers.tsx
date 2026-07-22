@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Award } from "lucide-react";
 import Image from "next/image";
-import { barbers } from "@/lib/config";
+import { barbers, receptionist } from "@/lib/config";
 import { Reveal, SectionHeading } from "./ui";
 
 export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
@@ -16,12 +16,12 @@ export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
           kicker="El equipo"
           title={
             <>
-              Maestros de la <span className="text-ice-gradient italic">navaja</span>
+              El equipo detrás de tu <span className="text-ice-gradient italic">mejor versión</span>
             </>
           }
-          subtitle="Manos firmes y ojo de detalle. Cada barbero de Silver Fox trata tu corte como si fuera el suyo: con orgullo y precisión."
+          subtitle="Manos firmes y trato de casa. Cada persona de Silver Fox pone lo suyo para que tu visita sea la mejor parte de tu semana."
         />
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
           {team.map((b, i) => (
             <Reveal key={b.id} delay={i * 0.1}>
               <motion.div
@@ -55,10 +55,14 @@ export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
                   </div>
                   <p className="text-sm text-stone-muted leading-relaxed">{b.specialty}</p>
                   <div className="flex items-center justify-between pt-3 border-t border-line/60">
-                    <span className="flex items-center gap-1.5 text-xs text-stone-muted">
-                      <Award className="w-3.5 h-3.5 text-ice" />
-                      {b.experience} de experiencia
-                    </span>
+                    {b.experience ? (
+                      <span className="flex items-center gap-1.5 text-xs text-stone-muted">
+                        <Award className="w-3.5 h-3.5 text-ice" />
+                        {b.experience} de experiencia
+                      </span>
+                    ) : (
+                      <span />
+                    )}
                     <button
                       onClick={() => onBook(b.id)}
                       className="text-xs font-semibold uppercase tracking-wider text-ice hover:text-ice-bright transition-colors cursor-pointer"
@@ -70,6 +74,36 @@ export function Barbers({ onBook }: { onBook: (barberId: string) => void }) {
               </motion.div>
             </Reveal>
           ))}
+
+          {/* Recepcionista: mismo trato visual, sin botón de reservar
+              (no aplica agendar un corte "con" recepción). */}
+          <Reveal delay={team.length * 0.1}>
+            <motion.div
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="group bg-surface border border-line hover:border-ice/40 rounded-2xl overflow-hidden transition-colors duration-300"
+            >
+              <div className="relative h-64 md:h-72 bg-gradient-to-br from-surface-2 via-ink-soft to-ink overflow-hidden">
+                <Image
+                  src={receptionist.photo}
+                  alt={`${receptionist.name}, ${receptionist.role}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-surface to-transparent" />
+              </div>
+              <div className="p-6 md:p-7 flex flex-col gap-3">
+                <div>
+                  <h3 className="font-display text-xl md:text-2xl text-cream">{receptionist.name}</h3>
+                  <p className="text-ice text-xs uppercase tracking-[0.2em] mt-1">{receptionist.role}</p>
+                </div>
+                <p className="text-sm text-stone-muted leading-relaxed">
+                  La primera cara amable que ves al llegar. Te acomoda, resuelve tus dudas y se asegura de que tu visita salga perfecta.
+                </p>
+              </div>
+            </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>

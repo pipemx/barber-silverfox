@@ -47,59 +47,79 @@ export type Service = {
   badge?: string;
 };
 
-// TODO: confirmar precios reales con la barbería
+// Precios y servicios reales, tomados del letrero de la barbería.
 export const services: Service[] = [
   {
-    id: "corte-clasico",
-    name: "Corte Clásico",
+    id: "corte-adulto",
+    name: "Corte Adulto",
     description:
       "Corte de precisión a tu medida: máquina, tijera y acabado con detalle. Sales listo para todo.",
     price: 150,
     duration: 45,
-  },
-  {
-    id: "taper-fade",
-    name: "Taper / Fade Silver",
-    description:
-      "Degradado limpio, fresco y con estilo. El sello de la casa: líneas firmes y acabado de espejo.",
-    price: 180,
-    duration: 50,
     featured: true,
     badge: "El favorito",
   },
   {
-    id: "corte-barba",
-    name: "Corte + Barba",
-    description:
-      "El combo completo: corte de precisión, perfilado de barba con navaja y toalla caliente.",
-    price: 250,
-    duration: 75,
-    badge: "Trato VIP",
-  },
-  {
-    id: "barba-ritual",
-    name: "Ritual de Barba",
-    description:
-      "Perfilado con navaja, toalla caliente y aceites para que tu barba hable por ti.",
-    price: 120,
-    duration: 30,
-  },
-  {
-    id: "experiencia-silver",
-    name: "Experiencia Silver Fox",
-    description:
-      "Corte + barba + facial + mascarilla negra. Una hora y media dedicada a tu mejor versión.",
-    price: 350,
-    duration: 90,
-    badge: "Consiéntete",
-  },
-  {
-    id: "corte-junior",
-    name: "Corte Junior",
+    id: "corte-infantil",
+    name: "Corte Infantil",
     description:
       "Para los futuros zorros de la casa. Misma precisión, paciencia extra y trato especial.",
     price: 120,
     duration: 30,
+  },
+  {
+    id: "barba",
+    name: "Barba",
+    description:
+      "Perfilado con navaja y toalla caliente para que tu barba hable por ti.",
+    price: 120,
+    duration: 30,
+  },
+  {
+    id: "cejas",
+    name: "Cejas",
+    description: "Perfilado rápido y preciso para una mirada más definida.",
+    price: 20,
+    duration: 10,
+  },
+  {
+    id: "mascarilla",
+    name: "Mascarilla",
+    description: "Limpieza facial que deja la piel fresca y renovada.",
+    price: 60,
+    duration: 20,
+  },
+  {
+    id: "paquete-1",
+    name: "Paquete 1 · Corte y Cejas",
+    description: "El combo rápido: corte adulto más perfilado de cejas.",
+    price: 150,
+    duration: 55,
+  },
+  {
+    id: "paquete-2",
+    name: "Paquete 2 · Corte, Cejas y Mascarilla",
+    description: "Corte, cejas y una mascarilla facial para salir renovado por completo.",
+    price: 180,
+    duration: 75,
+    badge: "Trato VIP",
+  },
+  {
+    id: "paquete-3",
+    name: "Paquete 3 · Corte y Barba",
+    description:
+      "El combo completo: corte de precisión, perfilado de barba con navaja y toalla caliente.",
+    price: 250,
+    duration: 75,
+  },
+  {
+    id: "paquete-silver-fox",
+    name: "Paquete Silver Fox",
+    description:
+      "Corte, barba, cejas y mascarilla. La experiencia completa dedicada a tu mejor versión.",
+    price: 280,
+    duration: 90,
+    badge: "Consiéntete",
   },
 ];
 
@@ -113,7 +133,6 @@ export type Barber = {
   photo?: string;
 };
 
-// TODO: reemplazar nombres y fotos con el equipo real de Silver Fox
 export const barbers: Barber[] = [
   {
     id: "cualquiera",
@@ -124,35 +143,59 @@ export const barbers: Barber[] = [
     initials: "SF",
   },
   {
-    id: "razo",
-    name: "Razo",
-    role: "Master Barber · Fundador",
-    specialty: "Taper fades de precisión y estilo urbano",
-    experience: "8 años",
-    initials: "RZ",
-    photo: "/images/barber-marco.jpg",
+    id: "alan",
+    name: "Alan",
+    role: "Barber",
+    // TODO: confirmar especialidad y años de experiencia reales
+    specialty: "Cortes de precisión y estilo personalizado",
+    experience: "",
+    initials: "AL",
+    photo: "/images/barber-alan.jpg",
   },
   {
-    id: "alexis",
-    name: "Alexis",
-    role: "Barber Profesional",
+    id: "ricardo",
+    name: "Ricardo",
+    role: "Capitán · Barber Senior",
+    specialty: "Fades y acabados de mano firme",
+    experience: "",
+    initials: "RC",
+    photo: "/images/barber-ricardo.jpg",
+  },
+  {
+    id: "tony",
+    name: "Tony",
+    role: "Barber",
     specialty: "Barbas esculpidas y navaja tradicional",
-    experience: "5 años",
-    initials: "AX",
-    photo: "/images/barber-andres.jpg",
+    experience: "",
+    initials: "TN",
+    photo: "/images/barber-tony.jpg",
   },
   {
-    id: "johan",
-    name: "Johan",
-    role: "Style Specialist",
-    specialty: "Tendencias, texturas y diseños freestyle",
-    experience: "4 años",
-    initials: "JH",
-    photo: "/images/barber-leon.jpg",
+    id: "eduardo",
+    name: "Eduardo",
+    role: "Barber",
+    specialty: "Diseños freestyle y tendencias urbanas",
+    experience: "",
+    initials: "ED",
+    photo: "/images/barber-eduardo.jpg",
   },
 ];
 
-// Galería — TODO: reemplazar con fotos reales de cortes y del local
+// Personal de recepción — se muestra junto al equipo de barberos pero no
+// aparece como opción de barbero al reservar.
+export type StaffMember = {
+  name: string;
+  role: string;
+  photo: string;
+};
+
+export const receptionist: StaffMember = {
+  name: "Isabella",
+  role: "Recepcionista",
+  photo: "/images/staff-isabella.jpg",
+};
+
+// Galería — fotos reales del local (silver1.jpg … silver8.jpg)
 export type GalleryItem = {
   src: string;
   alt: string;
@@ -160,13 +203,14 @@ export type GalleryItem = {
 };
 
 export const gallery: GalleryItem[] = [
-  { src: "/images/after-cut.png", alt: "Taper fade terminado en Silver Fox", tall: true },
-  { src: "/images/shop-interior.jpg", alt: "Interior de la barbería Silver Fox" },
-  { src: "/images/barber-marco.jpg", alt: "Barbero de Silver Fox trabajando", tall: true },
-  { src: "/images/hero-bg.jpg", alt: "Ambiente de la barbería" },
-  { src: "/images/barber-andres.jpg", alt: "Perfilado de barba con navaja" },
-  { src: "/images/before-cut.png", alt: "Cliente antes de su transformación", tall: true },
-  { src: "/images/barber-leon.jpg", alt: "Detalle de corte freestyle" },
+  { src: "/images/silver1.jpg", alt: "Sala de espera de Silver Fox", tall: true },
+  { src: "/images/silver2.jpg", alt: "Área de espera con ambientación de la barbería" },
+  { src: "/images/silver3.jpg", alt: "Recepción de Silver Fox" },
+  { src: "/images/silver4.jpg", alt: "Rincón con el poste de barbería clásico", tall: true },
+  { src: "/images/silver5.jpg", alt: "Estaciones de corte de Silver Fox" },
+  { src: "/images/silver6.jpg", alt: "Sillas de barbero listas para el siguiente cliente" },
+  { src: "/images/silver7.jpg", alt: "Estación de Tony en Silver Fox", tall: true },
+  { src: "/images/silver8.jpg", alt: "Estaciones de Alan y Ricardo en Silver Fox" },
 ];
 
 export const testimonials = [

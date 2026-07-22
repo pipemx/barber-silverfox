@@ -72,7 +72,13 @@ export function Gallery() {
                   sizes="(max-width: 768px) 50vw, 33vw"
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="absolute top-4 left-4 rounded-full glass px-3 py-1 text-[11px] font-semibold tracking-wider text-cream opacity-0 group-hover:opacity-100 -translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                  {String(i + 1).padStart(2, "0")} / {String(gallery.length).padStart(2, "0")}
+                </span>
+                <p className="absolute bottom-4 left-4 right-14 text-xs md:text-sm text-cream opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 leading-snug">
+                  {item.alt}
+                </p>
                 <span className="absolute bottom-4 right-4 w-10 h-10 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                   <ZoomIn className="w-5 h-5 text-ice" aria-hidden="true" />
                 </span>
