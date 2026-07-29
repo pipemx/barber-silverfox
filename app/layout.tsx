@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Jost } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { brand, hours, services, faqs } from "@/lib/config";
+import { brand, hours, services, faqs, siteUrl } from "@/lib/config";
 
 // Aplica el tema guardado ANTES de pintar la página (evita el flash del
 // tema equivocado). beforeInteractive lo inyecta en <head> y lo corre
@@ -31,8 +31,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  // TODO: reemplazar con el dominio real al publicar
-  metadataBase: new URL("https://barberiasilverfox.com"),
+  metadataBase: new URL(siteUrl),
   title: `Barbería ${brand.name} · Barbería en ${brand.city}, ${brand.metro} | ${brand.slogan}`,
   description: `Barbería en ${brand.city}, ${brand.metro}, ${brand.state}. Taper fades, cortes de precisión y ritual de barba con trato VIP a precio justo. ${brand.slogan}. Agenda tu cita por WhatsApp en menos de 1 minuto.`,
   keywords: [

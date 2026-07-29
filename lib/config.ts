@@ -4,6 +4,12 @@
 // "Corte firme, mirada fría."
 // ============================================================
 
+// Dominio real donde vive el sitio hoy. Cuando se compre el dominio
+// definitivo (ej. barberiasilverfox.com), cambiar solo esta línea y
+// configurar una redirección 301 permanente desde este dominio de Vercel
+// para no perder el posicionamiento ya ganado aquí.
+export const siteUrl = "https://barber-silverfox.vercel.app";
+
 export const brand = {
   name: "SILVER FOX",
   tagline: "Barbería",

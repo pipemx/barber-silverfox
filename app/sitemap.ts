@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 import { serviceLandings, locationLandings } from "@/lib/seo-content";
+import { siteUrl as base } from "@/lib/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://barberiasilverfox.com";
   const now = new Date();
 
   return [

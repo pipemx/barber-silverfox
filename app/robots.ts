@@ -1,12 +1,12 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/config";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = "https://barberiasilverfox.com";
   return {
     rules: {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: `${base}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }
