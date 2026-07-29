@@ -10,6 +10,10 @@
 // para no perder el posicionamiento ya ganado aquí.
 export const siteUrl = "https://barber-silverfox.vercel.app";
 
+// Contenedor de Google Tag Manager (mide visitas y conversiones: WhatsApp,
+// formulario de reserva, modal de reserva).
+export const gtmId = "GTM-KD5XK8DC";
+
 export const brand = {
   name: "SILVER FOX",
   tagline: "Barbería",

@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Jost } from "next/font/google";
 import Script from "next/script";
+import { GoogleTagManager } from "@next/third-parties/google";
 import "./globals.css";
-import { brand, hours, services, faqs, siteUrl } from "@/lib/config";
+import { brand, hours, services, faqs, siteUrl, gtmId } from "@/lib/config";
 
 // Aplica el tema guardado ANTES de pintar la página (evita el flash del
 // tema equivocado). beforeInteractive lo inyecta en <head> y lo corre
@@ -153,7 +154,16 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${bebas.variable} ${jost.variable} h-full antialiased`}
     >
+      <GoogleTagManager gtmId={gtmId} />
       <body className="min-h-full flex flex-col">
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Script
           id="theme-init"
           strategy="beforeInteractive"
