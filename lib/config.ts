@@ -31,10 +31,9 @@ export const brand = {
 };
 
 export const hours = [
-  // TODO: confirmar horarios reales con la barbería
-  { days: "Lunes a Viernes", open: "10:00", close: "20:00" },
-  { days: "Sábado", open: "9:00", close: "20:00" },
-  { days: "Domingo", open: "10:00", close: "15:00" },
+  { days: "Lunes a Viernes", open: "11:00", close: "20:00" },
+  { days: "Sábado", open: "10:00", close: "18:00" },
+  { days: "Domingo", open: "9:30", close: "14:00" },
 ];
 
 export type Service = {
