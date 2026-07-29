@@ -328,7 +328,9 @@ export const membershipPerks = [
 ];
 
 // Horarios disponibles que muestra el reservador (demo).
+// Basado en el horario Lunes a Viernes (11:00-20:00), citas cada 30 min.
 export const timeSlots = [
-  "10:00", "10:45", "11:30", "12:15", "13:00", "13:45",
-  "16:00", "16:45", "17:30", "18:15", "19:00", "19:45",
+  "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
+  "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
+  "17:00", "17:30", "18:00", "18:30", "19:00", "19:30",
 ];
