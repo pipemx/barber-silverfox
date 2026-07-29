@@ -54,7 +54,7 @@ export const services: Service[] = [
     description:
       "Corte de precisión a tu medida: máquina, tijera y acabado con detalle. Sales listo para todo.",
     price: 150,
-    duration: 45,
+    duration: 30,
     featured: true,
     badge: "El favorito",
   },
@@ -79,28 +79,28 @@ export const services: Service[] = [
     name: "Cejas",
     description: "Perfilado rápido y preciso para una mirada más definida.",
     price: 20,
-    duration: 10,
+    duration: 30,
   },
   {
     id: "mascarilla",
     name: "Mascarilla",
     description: "Limpieza facial que deja la piel fresca y renovada.",
     price: 60,
-    duration: 20,
+    duration: 30,
   },
   {
     id: "paquete-1",
     name: "Paquete 1 · Corte y Cejas",
     description: "El combo rápido: corte adulto más perfilado de cejas.",
     price: 150,
-    duration: 55,
+    duration: 30,
   },
   {
     id: "paquete-2",
     name: "Paquete 2 · Corte, Cejas y Mascarilla",
     description: "Corte, cejas y una mascarilla facial para salir renovado por completo.",
     price: 180,
-    duration: 75,
+    duration: 30,
     badge: "Trato VIP",
   },
   {
@@ -109,7 +109,7 @@ export const services: Service[] = [
     description:
       "El combo completo: corte de precisión, perfilado de barba con navaja y toalla caliente.",
     price: 250,
-    duration: 75,
+    duration: 30,
   },
   {
     id: "paquete-silver-fox",
@@ -117,7 +117,7 @@ export const services: Service[] = [
     description:
       "Corte, barba, cejas y mascarilla. La experiencia completa dedicada a tu mejor versión.",
     price: 280,
-    duration: 90,
+    duration: 30,
     badge: "Consiéntete",
   },
 ];
@@ -276,7 +276,7 @@ export const faqs = [
   },
   {
     q: "¿Cuánto dura una sesión?",
-    a: "Un corte clásico toma unos 45 minutos y el combo corte + barba alrededor de 75. Nunca trabajamos con prisa: tu tiempo en la silla es tuyo.",
+    a: "Cada cita dura 30 minutos, sin importar el servicio. Nunca trabajamos con prisa: tu tiempo en la silla es tuyo.",
   },
   {
     q: "¿Cómo puedo pagar?",
