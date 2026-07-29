@@ -8,11 +8,11 @@ import { brand } from "@/lib/config";
 import { ThemeToggle } from "./ThemeToggle";
 
 const links = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#galeria", label: "Galería" },
-  { href: "#barberos", label: "Barberos" },
-  { href: "#reservar", label: "Reservar" },
-  { href: "#ubicacion", label: "Ubicación" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#galeria", label: "Galería" },
+  { href: "/#barberos", label: "Barberos" },
+  { href: "/#reservar", label: "Reservar" },
+  { href: "/#ubicacion", label: "Ubicación" },
 ];
 
 export function Navbar({ onBook }: { onBook: () => void }) {
@@ -43,7 +43,7 @@ export function Navbar({ onBook }: { onBook: () => void }) {
       }`}
     >
       <nav className="mx-auto max-w-7xl px-5 md:px-8 flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-2.5 cursor-pointer" aria-label="Inicio">
+        <a href="/" className="flex items-center gap-2.5 cursor-pointer" aria-label="Inicio">
           <Image
             src="/images/logo-silverfox.jpg"
             alt=""

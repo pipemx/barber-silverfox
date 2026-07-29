@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, ArrowRight } from "lucide-react";
 import { services, type Service } from "@/lib/config";
@@ -81,6 +82,15 @@ export function Services({ onBook }: { onBook: (serviceId: string) => void }) {
           {services.map((s, i) => (
             <ServiceCard key={s.id} service={s} index={i} onBook={onBook} />
           ))}
+        </div>
+        <div className="mt-10 text-center">
+          <Link
+            href="/servicios"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-ice hover:text-ice-bright transition-colors"
+          >
+            Ver guía completa de cortes y fades
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
     </section>

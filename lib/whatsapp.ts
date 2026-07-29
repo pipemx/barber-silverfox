@@ -23,4 +23,6 @@ export const waMessages = {
     }\n\n¿Me confirman disponibilidad?`,
   membership: (planName: string) =>
     `Hola Silver Fox 🦊 Me interesa el ${planName} del Club Silver Fox. ¿Me comparten los detalles?`,
+  interest: (topic: string) =>
+    `Hola Silver Fox 🦊 Vi su página sobre ${topic} y me gustaría agendar una cita.`,
 };

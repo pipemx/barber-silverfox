@@ -1,6 +1,7 @@
 "use client";
 
-import { MapPin, Clock, Phone, Navigation, Mail } from "lucide-react";
+import Link from "next/link";
+import { MapPin, Clock, Phone, Navigation, Mail, ArrowRight } from "lucide-react";
 import { brand, hours } from "@/lib/config";
 import { GlowButton, Reveal, SectionHeading } from "./ui";
 
@@ -86,6 +87,13 @@ export function Location() {
                 <Navigation className="w-4 h-4" />
                 Cómo llegar
               </GlowButton>
+              <Link
+                href="/ubicaciones"
+                className="inline-flex items-center justify-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-ice hover:text-ice-bright transition-colors"
+              >
+                ¿Vienes de Cholul, Altabrisa o Montebello?
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </Reveal>
         </div>
