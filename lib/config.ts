@@ -33,7 +33,7 @@ export const brand = {
 export const hours = [
   { days: "Lunes a Viernes", open: "11:00", close: "20:00" },
   { days: "Sábado", open: "10:00", close: "18:00" },
-  { days: "Domingo", open: "9:30", close: "14:00" },
+  { days: "Domingo", open: "9:00", close: "14:00" },
 ];
 
 const APPOINTMENT_LENGTH_MIN = 30;

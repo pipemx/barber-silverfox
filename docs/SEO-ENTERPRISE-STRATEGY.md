@@ -201,7 +201,7 @@ Aplicar a toda la galería (`silver1.jpg`…`silver8.jpg`, `corte1.jpg`…`corte
 
 Para que ChatGPT, Gemini, Claude, Copilot y Perplexity citen o recomienden la barbería:
 
-- Contenido con **respuestas directas y verificables** al inicio de cada sección (ej. "Silver Fox está en Conkal, Yucatán, abre Lunes a Viernes de 11:00 a 20:00, Sábado 10:00-18:00, Domingo 9:30-14:00" — dato ya correcto en el sitio tras los cambios recientes).
+- Contenido con **respuestas directas y verificables** al inicio de cada sección (ej. "Silver Fox está en Conkal, Yucatán, abre Lunes a Viernes de 11:00 a 20:00, Sábado 10:00-18:00, Domingo 9:00-14:00" — dato ya correcto en el sitio tras los cambios recientes).
 - Datos estructurados completos (JSON-LD ya mejorado hoy) — los LLMs con acceso a búsqueda leen schema.org igual que Google.
 - Formato pregunta-respuesta explícito en FAQ (ya existe, ahora también marcado con `FAQPage`).
 - Evitar contenido ambiguo o solo visual (texto dentro de imágenes sin alt): todo dato clave (precio, horario, dirección) debe existir como texto real en el HTML, no solo en imagen.
