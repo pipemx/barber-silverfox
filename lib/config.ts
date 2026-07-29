@@ -36,6 +36,43 @@ export const hours = [
   { days: "Domingo", open: "9:30", close: "14:00" },
 ];
 
+const APPOINTMENT_LENGTH_MIN = 30;
+
+function timeToMinutes(t: string) {
+  const [h, m] = t.split(":").map(Number);
+  return h * 60 + m;
+}
+
+function minutesToTime(mins: number) {
+  const h = Math.floor(mins / 60);
+  const m = mins % 60;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+/** Horas disponibles para reservar según el día de la semana (0 = domingo … 6 = sábado). */
+export function timeSlotsForDay(dayOfWeek: number): string[] {
+  const range =
+    dayOfWeek === 0
+      ? hours.find((h) => h.days === "Domingo")
+      : dayOfWeek === 6
+        ? hours.find((h) => h.days === "Sábado")
+        : hours.find((h) => h.days === "Lunes a Viernes");
+  if (!range) return [];
+
+  const start = timeToMinutes(range.open);
+  const end = timeToMinutes(range.close);
+  const slots: string[] = [];
+  for (let t = start; t + APPOINTMENT_LENGTH_MIN <= end; t += APPOINTMENT_LENGTH_MIN) {
+    slots.push(minutesToTime(t));
+  }
+  return slots;
+}
+
+/** Horas disponibles para reservar según una fecha concreta. */
+export function timeSlotsForDate(date: Date): string[] {
+  return timeSlotsForDay(date.getDay());
+}
+
 export type Service = {
   id: string;
   name: string;
@@ -327,10 +364,3 @@ export const membershipPerks = [
   "Acceso a promos exclusivas para miembros",
 ];
 
-// Horarios disponibles que muestra el reservador (demo).
-// Basado en el horario Lunes a Viernes (11:00-20:00), citas cada 30 min.
-export const timeSlots = [
-  "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
-  "14:00", "14:30", "15:00", "15:30", "16:00", "16:30",
-  "17:00", "17:30", "18:00", "18:30", "19:00", "19:30",
-];

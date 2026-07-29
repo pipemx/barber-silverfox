@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CalendarCheck, Check, Clock, MessageSquare, Phone, User } from "lucide-react";
-import { brand, services, timeSlots } from "@/lib/config";
+import { brand, services, timeSlotsForDate } from "@/lib/config";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { Reveal, SectionHeading, WhatsAppIcon } from "./ui";
 
@@ -19,6 +19,11 @@ export function Booking() {
   const [comments, setComments] = useState("");
 
   const today = useMemo(() => new Date().toISOString().split("T")[0], []);
+
+  const timeSlots = useMemo(
+    () => (date ? timeSlotsForDate(new Date(`${date}T12:00:00`)) : []),
+    [date]
+  );
 
   const valid =
     name.trim().length >= 2 &&
@@ -169,7 +174,10 @@ export function Booking() {
                     type="date"
                     min={today}
                     value={date}
-                    onChange={(e) => setDate(e.target.value)}
+                    onChange={(e) => {
+                      setDate(e.target.value);
+                      setTime("");
+                    }}
                     className={`${inputCls} [color-scheme:dark] cursor-pointer`}
                   />
                 </div>
@@ -181,10 +189,11 @@ export function Booking() {
                     id="bk-time"
                     value={time}
                     onChange={(e) => setTime(e.target.value)}
-                    className={`${inputCls} appearance-none cursor-pointer ${time ? "" : "text-stone-muted/50"}`}
+                    disabled={!date}
+                    className={`${inputCls} appearance-none cursor-pointer disabled:cursor-not-allowed disabled:opacity-50 ${time ? "" : "text-stone-muted/50"}`}
                   >
                     <option value="" disabled>
-                      Elige la hora
+                      {date ? "Elige la hora" : "Primero elige una fecha"}
                     </option>
                     {timeSlots.map((t) => (
                       <option key={t} value={t} className="text-cream bg-ink-soft">

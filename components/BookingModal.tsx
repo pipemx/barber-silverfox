@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, Clock, Check } from "lucide-react";
-import { services, barbers, timeSlots } from "@/lib/config";
+import { services, barbers, timeSlotsForDate } from "@/lib/config";
 import { waLink, waMessages } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./ui";
 
@@ -14,13 +14,14 @@ const stepTitles = ["Elige tu servicio", "Elige tu barbero", "Fecha y hora", "Co
 
 /** Próximos 10 días para el selector (demo: la disponibilidad real vive en WhatsApp). */
 function nextDays(count = 10) {
-  const out: { iso: string; weekday: string; day: number; month: string }[] = [];
+  const out: { date: Date; iso: string; weekday: string; day: number; month: string }[] = [];
   const fmt = new Intl.DateTimeFormat("es-MX", { weekday: "short", month: "short" });
   for (let i = 0; i < count; i++) {
     const d = new Date();
     d.setDate(d.getDate() + i);
     const parts = fmt.formatToParts(d);
     out.push({
+      date: d,
       iso: d.toLocaleDateString("es-MX", { day: "numeric", month: "long" }),
       weekday: parts.find((p) => p.type === "weekday")?.value ?? "",
       day: d.getDate(),
@@ -84,6 +85,7 @@ export function BookingModal({
   const service = services.find((s) => s.id === serviceId);
   const barber = barbers.find((b) => b.id === barberId);
   const date = dateIdx !== null ? days[dateIdx] : null;
+  const timeSlots = useMemo(() => (date ? timeSlotsForDate(date.date) : []), [date]);
 
   const canContinue =
     (step === 0 && serviceId) ||
@@ -239,7 +241,10 @@ export function BookingModal({
                           {days.map((d, i) => (
                             <button
                               key={d.iso}
-                              onClick={() => setDateIdx(i)}
+                              onClick={() => {
+                                setDateIdx(i);
+                                setTime(null);
+                              }}
                               className={`shrink-0 w-16 rounded-xl border py-3 flex flex-col items-center gap-0.5 cursor-pointer transition-colors duration-200 ${
                                 dateIdx === i
                                   ? "border-ice bg-ice/10"
