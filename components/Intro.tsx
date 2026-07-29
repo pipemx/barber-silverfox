@@ -85,7 +85,7 @@ export function Intro() {
               className="logo-breathe w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border border-[#4cc3ff]/40"
             >
               <Image
-                src="/images/logo-silverfox.jpg"
+                src="/images/logo-clasico.jpg"
                 alt={`Barbería ${brand.name}`}
                 width={200}
                 height={200}
