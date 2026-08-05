@@ -106,6 +106,8 @@ const schema = {
     "@type": "AggregateRating",
     ratingValue: brand.rating,
     reviewCount: brand.reviewCount,
+    bestRating: 5,
+    worstRating: 1,
   },
   openingHoursSpecification: hours.map((h) => ({
     "@type": "OpeningHoursSpecification",
